@@ -1,0 +1,212 @@
+﻿.loginPage {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 18px;
+    overflow: hidden;
+    background: radial-gradient(circle at top left, rgba(255, 182, 193, 0.28), transparent 28%), radial-gradient(circle at bottom right, rgba(212, 175, 55, 0.16), transparent 25%), linear-gradient(135deg, #0f0f14 0%, #171720 35%, #1d1d2b 100%);
+}
+
+.loginOverlay {
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(4px);
+    pointer-events: none;
+}
+
+.loginContainer {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1120px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 32px;
+    align-items: center;
+}
+
+.loginBrand {
+    color: #ffffff;
+    padding: 20px 10px;
+}
+
+.loginBadge {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #f7d77a;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(247, 215, 122, 0.22);
+    margin-bottom: 18px;
+    backdrop-filter: blur(10px);
+}
+
+.loginBrand h1 {
+    margin: 0 0 14px;
+    font-size: clamp(2.4rem, 5vw, 4.5rem);
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+
+.loginBrand p {
+    margin: 0;
+    max-width: 540px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.loginCard {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 28px;
+    padding: 34px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28), 0 8px 24px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(18px);
+}
+
+.loginCardHeader {
+    margin-bottom: 28px;
+}
+
+    .loginCardHeader h2 {
+        margin: 0 0 8px;
+        font-size: 2rem;
+        color: #10111a;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+    }
+
+    .loginCardHeader p {
+        margin: 0;
+        color: #5f6473;
+        line-height: 1.6;
+    }
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.loginField {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+    .loginField label {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #242938;
+    }
+
+    .loginField input {
+        width: 100%;
+        height: 54px;
+        border: 1px solid #d8dbe5;
+        border-radius: 16px;
+        padding: 0 16px;
+        font-size: 1rem;
+        color: #121522;
+        background: rgba(255, 255, 255, 0.88);
+        transition: all 0.25s ease;
+        outline: none;
+        box-sizing: border-box;
+    }
+
+        .loginField input::placeholder {
+            color: #9aa1b3;
+        }
+
+        .loginField input:focus {
+            border-color: #caa44f;
+            box-shadow: 0 0 0 4px rgba(202, 164, 79, 0.14);
+            background: #ffffff;
+        }
+
+.loginButton {
+    margin-top: 6px;
+    height: 56px;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #11131d 0%, #24283a 100%);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+    box-shadow: 0 12px 24px rgba(17, 19, 29, 0.18);
+}
+
+    .loginButton:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 18px 32px rgba(17, 19, 29, 0.24);
+    }
+
+    .loginButton:disabled {
+        opacity: 0.75;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+.loginError {
+    background: rgba(220, 38, 38, 0.08);
+    color: #b91c1c;
+    border: 1px solid rgba(220, 38, 38, 0.15);
+    border-radius: 14px;
+    padding: 12px 14px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.loginFooterText {
+    margin-top: 22px;
+    text-align: center;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+    .loginContainer {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .loginBrand {
+        text-align: center;
+        padding: 0;
+    }
+
+        .loginBrand p {
+            margin: 0 auto;
+        }
+
+    .loginCard {
+        padding: 26px 20px;
+        border-radius: 22px;
+    }
+}
+
+@media (max-width: 520px) {
+    .loginPage {
+        padding: 18px 12px;
+    }
+
+    .loginCardHeader h2 {
+        font-size: 1.65rem;
+    }
+
+    .loginField input,
+    .loginButton {
+        height: 52px;
+    }
+}

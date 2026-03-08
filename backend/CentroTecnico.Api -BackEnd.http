@@ -1,0 +1,6 @@
+@CentroTecnico.Api__BackEnd_HostAddress = http://localhost:5287
+
+GET {{CentroTecnico.Api__BackEnd_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

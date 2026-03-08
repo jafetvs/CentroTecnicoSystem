@@ -1,0 +1,6 @@
+@CentroTecnicoApi_HostAddress = http://localhost:5118
+
+GET {{CentroTecnicoApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

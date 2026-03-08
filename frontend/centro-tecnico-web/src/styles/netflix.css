@@ -1,0 +1,337 @@
+﻿/* ====== PORTAFOLIO (GRID) ====== */
+
+.nf-page {
+    padding: 18px 0 54px;
+}
+
+.nf-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 18px;
+}
+
+.nf-headerRow {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.nf-title {
+    margin: 0;
+    font-size: 26px;
+    letter-spacing: .2px;
+}
+
+.nf-subtitle {
+    margin: 6px 0 0;
+    opacity: .78;
+}
+
+/* Móvil: 2 columnas SIEMPRE */
+.nf-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+@media (min-width: 720px) {
+    .nf-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 980px) {
+    .nf-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+/* Card */
+.nf-card {
+    text-align: left;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(17,17,20,0.92);
+    border-radius: 18px;
+    padding: 0;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+
+    .nf-card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(200,162,74,0.28);
+        box-shadow: 0 16px 34px rgba(0,0,0,0.55);
+    }
+
+.nf-cardMedia {
+    position: relative;
+    overflow: hidden;
+    background: rgba(0,0,0,0.35);
+    height: clamp(110px, 26vw, 150px);
+}
+
+@media (min-width: 720px) {
+    .nf-cardMedia {
+        height: 150px;
+    }
+}
+
+.nf-cardImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.02);
+    transition: transform .22s ease;
+}
+
+.nf-card:hover .nf-cardImg {
+    transform: scale(1.08);
+}
+
+.nf-cardOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,10,12,0.92), rgba(10,10,12,0.10));
+}
+
+.nf-cardBadge {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.55);
+    border: 1px solid rgba(200,162,74,0.25);
+}
+
+.nf-cardBody {
+    padding: 10px 12px 12px;
+}
+
+.nf-cardName {
+    font-weight: 850;
+    letter-spacing: .2px;
+    margin-bottom: 4px;
+}
+
+.nf-cardDesc {
+    font-size: 13px;
+    opacity: .78;
+    line-height: 1.25rem;
+}
+
+/* ====== STORIES FULLSCREEN (NO se alarga la página) ====== */
+
+/* Pantalla completa REAL: usa svh para móvil (evita bugs de barra del navegador) */
+.storyModal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: grid;
+    place-items: center;
+    padding: 0; /* full */
+    height: 100svh; /* clave */
+    width: 100vw;
+    overflow: hidden; /* clave */
+}
+
+.storyOverlay {
+    position: fixed;
+    inset: 0;
+    border: 0;
+    background: rgba(0,0,0,0.82);
+    z-index: 2001;
+    cursor: pointer;
+}
+
+/* Contenedor principal */
+.storyShell {
+    position: relative;
+    z-index: 2002;
+    width: 100%;
+    height: 100svh; /* full */
+    max-width: 520px; /* look “stories” en desktop */
+    overflow: hidden;
+    background: rgba(10,10,12,0.92);
+    border-left: 1px solid rgba(255,255,255,0.08);
+    border-right: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 30px 120px rgba(0,0,0,0.75);
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+}
+
+/* En pantallas grandes que se vea como “teléfono” centrado */
+@media (min-width: 900px) {
+    .storyShell {
+        height: min(92vh, 860px);
+        border-radius: 22px;
+        border: 1px solid rgba(255,255,255,0.10);
+    }
+}
+
+/* Barra superior */
+.storyTop {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 14px 10px;
+    padding-top: calc(14px + env(safe-area-inset-top));
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.storyTopText {
+    min-width: 0;
+}
+
+.storyTitle {
+    font-weight: 950;
+    letter-spacing: .2px;
+    font-size: 16px;
+    line-height: 1.1;
+}
+
+.storySub {
+    margin-top: 4px;
+    font-size: 12px;
+    opacity: .78;
+    line-height: 1.15rem;
+}
+
+.storyClose {
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(0,0,0,0.35);
+    color: #fff;
+    border-radius: 12px;
+    padding: 8px 10px;
+    cursor: pointer;
+}
+
+/* Progreso */
+.storyProgress {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: 6px;
+    padding: 10px 14px 8px;
+}
+
+.storyBar {
+    height: 3px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.12);
+    overflow: hidden;
+}
+
+    .storyBar.isOn {
+        background: rgba(200,162,74,0.85);
+    }
+
+/* Viewport horizontal (snap) */
+.storyViewport {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    overscroll-behavior: contain; /* no “rebote” que afecte a la página */
+}
+
+    .storyViewport::-webkit-scrollbar {
+        display: none;
+    }
+
+.storyTrack {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.storySlide {
+    flex: 0 0 100%;
+    width: 100%;
+    scroll-snap-align: start;
+    display: grid;
+    place-items: center;
+    padding: 14px;
+}
+
+/* Marco de la foto: 1:1 centrado, sin cortar feo */
+.storyFrame {
+    width: min(92vw, 460px);
+    aspect-ratio: 1 / 1;
+    border-radius: 18px;
+    overflow: hidden;
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.10);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.55);
+}
+
+.storyImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* stories */
+    display: block;
+}
+
+/* Controles inferiores */
+.storyControls {
+    display: grid;
+    grid-template-columns: 44px 1fr 44px;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px 14px;
+    padding-bottom: calc(14px + env(safe-area-inset-bottom));
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.storyBtn {
+    height: 40px;
+    width: 44px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(0,0,0,0.35);
+    color: #fff;
+    cursor: pointer;
+    font-size: 22px;
+    line-height: 0;
+}
+
+    .storyBtn:disabled {
+        opacity: .35;
+        cursor: not-allowed;
+    }
+
+.storyDots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.storyDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    border: 0;
+    background: rgba(255,255,255,0.18);
+    cursor: pointer;
+}
+
+    .storyDot.isActive {
+        background: rgba(200,162,74,0.95);
+    }
+
+.storyEmpty {
+    min-height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    padding: 24px;
+}

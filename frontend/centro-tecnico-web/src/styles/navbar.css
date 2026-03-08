@@ -1,0 +1,200 @@
+﻿/* ===== NAVBAR ===== */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    border-bottom: 1px solid var(--borderGold);
+    background: rgba(10,10,12,0.70);
+    backdrop-filter: blur(10px);
+}
+
+.nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 12px 0;
+}
+
+/* ===== BRAND ===== */
+.nav__brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.nav__logo {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(0,0,0,0.25);
+}
+
+.nav__brandText {
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ===== LINKS DESKTOP ===== */
+.nav__links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav__link {
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid transparent;
+    color: var(--text);
+    opacity: 0.85;
+    font-size: 14px;
+    transition: opacity .15s ease, border-color .15s ease, background .15s ease;
+}
+
+    .nav__link:hover {
+        opacity: 1;
+        border-color: rgba(255,255,255,0.08);
+        background: rgba(0,0,0,0.25);
+    }
+
+    .nav__link.isActive {
+        opacity: 1;
+        border-color: var(--borderGold);
+        background: rgba(200,162,74,0.10);
+    }
+
+/* ===== BOTÓN MENÚ (MOBILE) ===== */
+.nav__menuBtn {
+    display: none;
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(0,0,0,0.25);
+    color: var(--text);
+    border-radius: 14px;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+/* ICONO HAMBURGUESA */
+.nav__burger {
+    display: inline-block;
+    width: 18px;
+    height: 2px;
+    background: var(--text);
+    position: relative;
+    opacity: 0.9;
+}
+
+    .nav__burger::before,
+    .nav__burger::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 18px;
+        height: 2px;
+        background: var(--text);
+    }
+
+    .nav__burger::before {
+        top: -6px;
+    }
+
+    .nav__burger::after {
+        top: 6px;
+    }
+
+/* ===== OVERLAY ===== */
+.nav__overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 70;
+    border: none;
+    background: rgba(0,0,0,0.55);
+}
+
+/* ===== DRAWER (MENÚ LATERAL) ===== */
+.nav__drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(320px, 86vw);
+    z-index: 80;
+    transform: translateX(110%);
+    transition: transform .18s ease;
+    background: rgba(12,12,14,0.95);
+    backdrop-filter: blur(14px);
+    border-left: 1px solid rgba(255,255,255,0.08);
+    box-shadow: -18px 0 50px rgba(0,0,0,0.55);
+    padding: 14px;
+    display: grid;
+    grid-template-rows: auto auto; /* ✅ CORREGIDO */
+    align-content: start; /* ✅ CLAVE */
+    gap: 12px;
+}
+
+    .nav__drawer.isOpen {
+        transform: translateX(0);
+    }
+
+/* HEADER DEL DRAWER */
+.nav__drawerHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav__drawerTitle {
+    font-weight: 900;
+}
+
+.nav__closeBtn {
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(0,0,0,0.25);
+    color: var(--text);
+    border-radius: 12px;
+    padding: 8px 10px;
+    cursor: pointer;
+}
+
+/* ===== LINKS MOBILE (FIX PRINCIPAL) ===== */
+.nav__links--mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: auto; /* ✅ evita que se estire */
+    justify-content: flex-start; /* ✅ pegado arriba */
+}
+
+    /* LINKS MOBILE MÁS BONITOS */
+    .nav__links--mobile .nav__link {
+        width: 100%;
+        padding: 12px;
+        border-radius: 12px;
+        background: rgba(0,0,0,0.25);
+        border: 1px solid rgba(255,255,255,0.08);
+        opacity: 1;
+    }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 780px) {
+    .nav__links--desktop {
+        display: none;
+    }
+
+    .nav__menuBtn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav__brandText {
+        display: none;
+    }
+}
